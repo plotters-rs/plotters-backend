@@ -31,3 +31,9 @@ impl BackendStyle for BackendColor {
         *self
     }
 }
+
+impl<T: BackendStyle> BackendStyle for &'_ T {
+    fn color(&self) -> BackendColor {
+        T::color(self)
+    }
+}
